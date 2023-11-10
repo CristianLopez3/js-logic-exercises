@@ -32,8 +32,7 @@ html{
 
 .calculator{
     padding: 2rem;
-    width: 450px;
-    height: 550px;  
+    width: 450px;  
     border: 2px solid #000;
     box-shadow: 0 0 10px #ff9900;
     border-radius: 1rem;
@@ -64,6 +63,8 @@ p#pantalla{
     text-align: left;
     vertical-align: center;
     padding: 1rem .5rem;
+    height: 3rem;
+    vertical-align: middle;
     background: gray;
 }
 
@@ -73,14 +74,14 @@ p#pantalla{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 }
 
 
 button{
     text-align: center;
     padding: 1rem 2rem;
-    border-radius: .6rem;
+    border-radius: 50%;
     transition: .5s;
 }
 
@@ -98,4 +99,21 @@ button:hover{
     background: #ff9900;
     color: #000;
     cursor: pointer;
+}
+
+#igual {
+    background-color: black;
+    color: #ff9900;
+    border: none;
+    font-size: 2rem;
+}
+
+#limpiar {
+    background-color: black;
+    color: #ff9900;
+    font-weight: bolder;
+}
+
+#users{
+    border-radius: .6rem;
 }
