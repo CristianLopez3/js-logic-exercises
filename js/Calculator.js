@@ -44,15 +44,38 @@ const nuevoUsuario = () => {
 // Asignar dataset a las operaciones
 let sumar = d.getElementById("sumar");
 sumar.dataset.operacion = "+";
+
 let multiplicar = d.getElementById("multiplicar");
 multiplicar.dataset.operacion = "*";
+
 let dividir = d.getElementById("dividir");
 dividir.dataset.operacion = "/";
+
 let restar = d.getElementById("restar");
 restar.dataset.operacion = "-";
+
 let modulo = d.getElementById("modulo");
-modulo.dataset.operacion = "%";
-let operaciones = [sumar, multiplicar, dividir, restar, modulo];
+modulo.dataset.operacion = "MOD";
+
+let cuadrado = d.getElementById("cuadrado");
+cuadrado.dataset.operacion = "^";
+
+let porcentaje = d.getElementById("porcentaje");
+porcentaje.dataset.operacion = "%";
+
+let raiz = d.getElementById("raiz");
+porcentaje.dataset.operacion = "√";
+
+let operaciones = [
+  sumar,
+  multiplicar,
+  dividir,
+  restar,
+  modulo,
+  porcentaje,
+  cuadrado,
+  raiz,
+];
 
 const limpiarPantalla = () => (pantalla.textContent = "");
 
@@ -114,18 +137,21 @@ igual.addEventListener("click", (e) => {
     return;
 
   numero2 = parseInt(pantalla.textContent);
-  let resultado = 0;
+  let resultado;
 
   switch (operacion) {
     case "+":
       resultado = numero1 + numero2;
       break;
+
     case "-":
       resultado = numero1 - numero2;
       break;
+
     case "*":
       resultado = numero1 * numero2;
       break;
+
     case "/":
       if (numero2 !== 0) {
         resultado = numero1 / numero2;
@@ -133,6 +159,25 @@ igual.addEventListener("click", (e) => {
         resultado = "División por cero";
       }
       break;
+
+    case "MOD":
+      resultado = numero1 % numero2;
+      break;
+
+    case "^":
+      resultado = numero1 ** numero2;
+      break;
+
+    case "%":
+      if (numero2 < 0 || numero2 > 100) resultado = "error";
+      // Calcular el porcentaje
+      resultado = (numero1 * numero2) / 100;
+      break;
+
+    case "√":
+      resultado = numero1 ** numero2;
+      break;
+
     default:
       resultado = "Operador no válido";
   }
@@ -141,15 +186,29 @@ igual.addEventListener("click", (e) => {
   // Reiniciamos los valores
   numero1 = resultado;
   numero2 = 0;
-
 });
 
-
 // limpiar pantalla
-const limpiar = d.getElementById('limpiar');
-limpiar.addEventListener('click', e => {
-    numero1 = 0;
-    numero2 = 0;
-    valor = 0;
-    limpiarPantalla();
-})
+const limpiar = d.getElementById("limpiar");
+limpiar.addEventListener("click", (e) => {
+  numero1 = 0;
+  numero2 = 0;
+  valor = 0;
+  limpiarPantalla();
+});
+
+// Desahibilidar la calcualdora cuando haya cuatro usuarios
+if (cantidadUsuarios === 4) {
+  const botones = document.querySelectorAll("button");
+
+  // Agregar un manejador de eventos de clic a cada botón
+  botones.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      // Deshabilitar todos los botones
+      botones.forEach((b) => (b.disabled = true));
+
+      // Habilitar el botón actual (el que se hizo clic)
+      boton.disabled = false;
+    });
+  });
+}

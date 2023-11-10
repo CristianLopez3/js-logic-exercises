@@ -112,6 +112,7 @@ button:hover{
     background-color: black;
     color: #ff9900;
     font-weight: bolder;
+    border: none;
 }
 
 #users{
