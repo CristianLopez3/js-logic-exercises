@@ -191,9 +191,11 @@ igual.addEventListener("click", (e) => {
 // limpiar pantalla
 const limpiar = d.getElementById("limpiar");
 limpiar.addEventListener("click", (e) => {
-  numero1 = 0;
-  numero2 = 0;
-  valor = 0;
+  numero1 = "";
+  numero2 = "";
+  valor = "";
+  contenido = "";
+  pantalla.textContent = "";
   limpiarPantalla();
 });
 
