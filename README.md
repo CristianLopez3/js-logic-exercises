@@ -1,4 +1,4 @@
-# Basic Calcualtor
+# Basic Calculator 📘
 
 This project is an example of basic calcultaror with JavaScript.
 I wait that you can give your feedback about it, so let's go ahead and
